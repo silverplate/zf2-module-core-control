@@ -1,0 +1,35 @@
+<?php
+
+$href = rtrim($this->model->getHref(), '/');
+$isSubPages = count($this->model->getPages()) > 0;
+
+$params = $this->model->getParams();
+$isCurrent = !empty($params['is-selected']);
+
+$classes = array();
+if ($isSubPages) $classes[] = 'dropdown';
+if ($this->model->isActive()) $classes[] = 'active';
+
+$class = '';
+if (count($classes) > 0) {
+    $class = ' class="' . implode(' ', $classes) . '"';
+}
+
+?><li<?= $class ?>>
+    <?php if ($isSubPages): ?>
+        <a href="<?= $href ?>" class="dropdown-toggle" data-toggle="dropdown">
+            <?= $this->model->label ?>
+            <b class="caret"></b>
+        </a>
+
+        <ul class="dropdown-menu"><?=
+            $this->partial('core-control/layout/navigation/list', $this->model)
+        ?></ul>
+
+    <?php elseif ($isCurrent): ?>
+        <a><?= $this->model->label ?></a>
+
+    <?php else: ?>
+        <a href="<?= $href ?>"><?= $this->model->label ?></a>
+    <?php endif ?>
+</li>

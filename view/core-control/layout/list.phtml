@@ -1,0 +1,35 @@
+<?php
+
+if ($this->isSortable) {
+    $jsSortUri = $this->path . '/srt';
+    $this->inlineScript()->appendScript("$(function() {
+        initSort($(\".sortable\"), \"$jsSortUri\");
+    });");
+}
+
+?><div class="row">
+    <?php if (empty($this->list)): ?>
+        <div class="col-xs-12">
+            <a href="<?= $this->path ?>/add" class="btn btn-info">Добавить</a>
+        </div>
+    <?php else: ?>
+        <div class="col-xs-7"><ul class="list-unstyled nav-container<?php
+            if ($this->isSortable) echo ' sortable';
+        ?>"><?php foreach ($this->list as $item): ?>
+            <li>
+                <?php if ($this->isSortable): ?><input
+                    type="hidden"
+                    name="sort-items[]"
+                    value="<?= $item->getId() ?>"
+                ><?php endif; ?>
+
+                <a href="<?= $this->path ?>/edit/<?= $item->getId()?>"<?php
+                    if (!$item->isPublished()) echo ' class="text-muted"';
+                ?>><?= $item->getTitle() ?></a>
+            </li>
+        <?php endforeach; ?></ul></div>
+        <div class="col-xs-5">
+            <a href="<?= $this->path ?>/add" class="btn btn-default">Добавить</a>
+        </div>
+    <?php endif; ?>
+</div>

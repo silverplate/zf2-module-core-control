@@ -1,0 +1,23 @@
+<?php
+
+$html = array();
+
+foreach ($this->form->getElements() as $ele) {
+    if ($ele instanceof \Zend\Form\Element\Submit) {
+        if ($ele->getName() == 'delete') {
+            $ele->setAttribute('class', 'btn btn-danger pull-right');
+            $ele->setAttribute('onclick', 'return confirm("Вы уверены?");');
+            $ele->setValue($ele->getValue() . '…');
+
+        } else {
+            $ele->setAttribute('class', 'btn btn-default');
+        }
+
+        $html[] = $this->formSubmit($ele);
+    }
+}
+
+if ($html) {
+    echo '<div class="clearfix"></div>';
+    echo '<footer>' . implode(' ', $html) . '</footer>';
+}

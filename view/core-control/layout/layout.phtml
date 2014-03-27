@@ -1,0 +1,50 @@
+<?= $this->doctype() ?>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/public-control/twbs/css/bootstrap.min.css"
+          rel="stylesheet" media="screen">
+    <link href="/public-control/css/styles.css" rel="stylesheet" media="screen">
+
+    <?php /*
+    <!--[if lt IE 9]>
+    <script src="/ctrl/js/html5shiv.js"></script>
+    <script src="/ctrl/js/respond.min.js"></script>
+    <![endif]-->
+    */ ?>
+
+    <?php
+
+    /** @var $this \Zend\View\Renderer\PhpRenderer */
+
+    echo $this->headLink();
+    echo $this->headStyle();
+    echo $this->headScript();
+    echo $this->headTitle();
+
+    ?>
+</head>
+<body>
+
+<?= $this->partial('core-control/layout/navigation') ?>
+
+<div class="container"><?php
+    echo $this->partial('core-control/layout/breadcrumbs');
+    echo $this->partial('core-control/layout/flash-messenger');
+    echo $this->content;
+
+?></div><?php
+
+$this->inlineScript()
+     ->prependFile('/public-control/js/scripts.js')
+     ->prependFile('/public-control/twbs/js/bootstrap.min.js')
+     ->prependFile('/public-control/js/jquery.cookie.js')
+     ->prependFile('/public-control/js/jquery-ui.js')
+     ->prependFile('/public-control/js/jquery.js');
+
+echo $this->inlineScript();
+
+?></body>
+</html>

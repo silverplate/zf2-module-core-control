@@ -1,0 +1,29 @@
+<?php
+
+$children = $this->viewModel()->getCurrent()->getChildren();
+$view = $children[0];
+
+if ($view->breadcrumbs) {
+    $pages = array_values($view->breadcrumbs->getPages());
+
+    if (count($pages) > 1) {
+        $pages[count($pages) - 1]->setActive(true);
+
+        echo '<ol class="breadcrumb">';
+
+        foreach ($pages as $page) {
+            if ($page->isActive()) {
+                printf('<li class="active">%s</li>', $page->getLabel());
+
+            } else {
+                printf(
+                    '<li><a href="%s">%s</a>',
+                    $page->getHref(),
+                    $page->getLabel()
+                );
+            }
+        }
+
+        echo '</ol>';
+    }
+}

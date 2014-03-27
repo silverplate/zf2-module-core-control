@@ -1,0 +1,116 @@
+body {
+    padding-bottom: 50px;
+}
+
+.radio-inline label {
+    font-weight: normal;
+}
+
+form footer {
+    border-top: 2px solid #ddd;
+    margin-top: 3em;
+    padding-top: 1em;
+}
+
+label span.required {
+    color: red;
+}
+
+label span.optional-required {
+    color: grey;
+}
+
+form .tab-content {
+    margin-top: 2em;
+}
+
+/*
+h1 {
+    margin-bottom: 1em;
+}
+
+ul.nav-container a,
+.tree-nav a {
+    color: #000;
+}
+
+.text-muted a,
+a.text-muted {
+    color: #999 !important;
+}
+
+.tree-nav {
+    padding-bottom: 20px;
+}
+
+.tree-nav span.glyphicon-chevron-up {
+    cursor: pointer;
+    margin-right: 5px;
+    padding-bottom: 1px;
+}
+
+.tree-nav span.glyphicon-chevron-down {
+    padding-bottom: 0;
+    margin-left: -1px;
+    margin-right: 6px;
+}
+
+.tree-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+form fieldset {
+    padding-bottom: 15px;
+}
+
+form .tab-pane {
+    padding-top: 20px;
+}
+
+form footer {
+    border-top: 2px solid #ddd;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+ul.file {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+ul.file li {
+    margin-bottom: 5px;
+}
+
+ul.file li.checkbox {
+    padding-top: 0;
+    margin-bottom: 15px
+}
+
+ul.element-files {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.element-files li {
+    display: block;
+    float: left;
+    margin: 0 30px 20px 0;
+}
+
+ul.element-files li .wrap {
+    width: 250px;
+}
+
+.has-error .checkbox {
+    color: #000;
+}
+
+label.control-label span.help-block {
+    font-weight: normal;
+}
+*/

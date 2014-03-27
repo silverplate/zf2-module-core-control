@@ -1,0 +1,33 @@
+<?php
+
+use Zend\Mvc\Controller\Plugin\FlashMessenger;
+
+/** @var \Zend\View\Helper\FlashMessenger $messenger */
+$messenger = $this->flashMessenger();
+$plugin = $messenger->getPluginFlashMessenger();
+
+$classes = 'alert alert-dismissable';
+$tmpl = '<div class="%s"><button type="button" class="close" ' .
+        'data-dismiss="alert" aria-hidden="true">&times;</button>%s</div>';
+
+$namespaces = array(
+    FlashMessenger::NAMESPACE_ERROR => 'alert-danger',
+    FlashMessenger::NAMESPACE_SUCCESS => 'alert-success',
+    FlashMessenger::NAMESPACE_INFO => 'alert-info',
+    FlashMessenger::NAMESPACE_DEFAULT => 'alert-warning'
+);
+
+foreach ($namespaces as $ns => $class) {
+    $messages = array_merge(
+        $plugin->getMessagesFromNamespace($ns),
+        $plugin->getCurrentMessagesFromNamespace($ns)
+    );
+
+//    $plugin->clearCurrentMessagesFromNamespace($ns);
+
+    foreach ($messages as $msg) {
+        printf($tmpl, $classes . ' ' . $class, $msg);
+    }
+}
+
+$plugin->clearCurrentMessagesFromNamespace(FlashMessenger::NAMESPACE_ERROR);

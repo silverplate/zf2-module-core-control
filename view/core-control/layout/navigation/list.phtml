@@ -1,0 +1,5 @@
+<?php
+
+foreach ($this->model->getPages() as $page) {
+    echo $this->partial('core-control/layout/navigation/item', $page);
+}
