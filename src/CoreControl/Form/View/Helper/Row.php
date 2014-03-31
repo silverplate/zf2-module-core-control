@@ -26,22 +26,6 @@ class Row extends FormRow
         }
 
 
-        // Required mark
-
-        if ($element->getOption('is_required')) {
-            $element->setLabel(
-                $element->getLabel() .
-                '<span class="required">&acute;</span>'
-            );
-
-        } else  if ($element->getOption('is_optional_required')) {
-            $element->setLabel(
-                $element->getLabel() .
-                '<span class="optional-required">&acute;</span>'
-            );
-        }
-
-
         // Add label classes
 
         $attrs = $element->getLabelAttributes();
@@ -51,7 +35,20 @@ class Row extends FormRow
         $attrs['class'] = trim($attrs['class'] . ' col-sm-3 control-label');
         $element->setLabelAttributes($attrs);
 
-        $label = $this->getLabelHelper()->__invoke($element);
+
+        // Required mark
+
+        $labelContent = $element->getLabel();
+
+        if ($element->getOption('is_required')) {
+            $labelContent .= '<span class="required">&acute;</span>';
+
+        } else  if ($element->getOption('is_optional_required')) {
+            $labelContent .= '<span class="optional-required">&acute;</span>';
+        }
+
+
+        $label = $this->getLabelHelper()->__invoke($element, $labelContent);
         // Restore attributes for sub-labels
         $element->setLabelAttributes($originAttrs);
 
