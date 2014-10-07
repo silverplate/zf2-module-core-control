@@ -60,7 +60,11 @@ abstract class AbstractController extends AbstractActionController
 
     public function onDispatch(MvcEvent $_e)
     {
-        $this->layout()->setTemplate('core-control/layout/layout');
+        /**
+         * @todo Сложно переопределить, реализовать иначе
+         * $this->layout()->setTemplate('core-control/layout/layout');
+         */
+
         $result = parent::onDispatch($_e);
 
 
