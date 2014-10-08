@@ -25,6 +25,13 @@ trait SimpleFormTrait
 
             if (!$this->_entity) {
                 $this->_entity = $this->mpr()->getEntityPrototype();
+
+                if (
+                    !$this->_entity->getId() &&
+                    method_exists($this->_entity, 'isPublished')
+                ) {
+                    $this->_entity->isPublished(true);
+                }
             }
         }
 
