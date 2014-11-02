@@ -24,7 +24,7 @@ trait SimpleFormTrait
             }
 
             if (!$this->_entity) {
-                $this->_entity = $this->mpr()->getEntityPrototype();
+                $this->_entity = $this->mpr()->computeEntityPrototype();
 
                 if (
                     !$this->_entity->getId() &&

@@ -58,8 +58,7 @@ class Row extends FormRow
         if (!$element instanceof Checkbox) {
             $class = $element->getAttribute('class') ?: '';
             if (!$class || strpos($class, 'form-control') === false) {
-                $class .= trim(' form-control');
-                $element->setAttribute('class', $class);
+                $element->setAttribute('class', trim('form-control ' . $class));
             }
         }
 
