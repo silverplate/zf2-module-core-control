@@ -68,10 +68,17 @@ class Row extends FormRow
         $class = array('form-group');
         if ($element->getMessages()) $class[] = 'has-error';
 
+
+        // Input class (size)
+
+        $inputClass = $element->getOption('input-class') ?: 'col-sm-9';
+
+
         return sprintf(
-            '<div class="%s">%s<div class="col-sm-9">%s</div></div>',
+            '<div class="%s">%s<div class="%s">%s</div></div>',
             implode(' ', $class),
             $label,
+            $inputClass,
             $this->getElementHelper()->render($element) .
             $this->getElementErrorsHelper()->render($element)
         );
