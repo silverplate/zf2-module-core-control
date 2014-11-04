@@ -21,15 +21,15 @@ abstract class AbstractController extends AbstractActionController
 
     protected function _appendPageTitle($_title)
     {
-        $this->srv('viewHelperManager')->get('headTitle')->append($_title);
+        $this->_srv('viewHelperManager')->get('headTitle')->append($_title);
     }
 
-    public function srv($_name)
+    protected function _srv($_name)
     {
         return $this->getServiceLocator()->get($_name);
     }
 
-    protected function _getView()
+    protected function _view()
     {
         if (!isset($this->_view)) {
             $this->_view = new ViewModel();
@@ -70,14 +70,14 @@ abstract class AbstractController extends AbstractActionController
 
         // Вычисление выбранного пункта навигации
 
-        $this->_updateNavBranch($this->srv('control-navigation')->getPages());
+        $this->_updateNavBranch($this->_srv('control-navigation')->getPages());
 
 
         if ($result instanceof ViewModel) {
 
             // Заголовок
 
-            $this->srv('viewHelperManager')->get('headTitle')->prepend(
+            $this->_srv('viewHelperManager')->get('headTitle')->prepend(
                 $this->_title
             );
 

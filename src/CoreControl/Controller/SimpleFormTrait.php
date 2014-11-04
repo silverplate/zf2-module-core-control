@@ -71,14 +71,14 @@ trait SimpleFormTrait
      */
     public function indexAction()
     {
-        $this->_getView()->setTemplate('core-control/layout/list');
-        $this->_getView()->setVariable('list', $this->mpr()->getList());
+        $this->_view()->setTemplate('core-control/layout/list');
+        $this->_view()->setVariable('list', $this->mpr()->getList());
 
         if ($this->mpr()->isSortable()) {
-            $this->_getView()->setVariable('isSortable', true);
+            $this->_view()->setVariable('isSortable', true);
         }
 
-        return $this->_getView();
+        return $this->_view();
     }
 
     public function addAction()
@@ -93,10 +93,10 @@ trait SimpleFormTrait
                 array('action' => 'add')
             ), '/'), 'Добавление');
 
-            $this->_getView()->setTemplate('core-control/forms/form');
-            $this->_getView()->setVariable('form', $form);
+            $this->_view()->setTemplate('core-control/forms/form');
+            $this->_view()->setVariable('form', $form);
 
-            return $this->_getView();
+            return $this->_view();
         }
 
         return $form;
@@ -123,10 +123,10 @@ trait SimpleFormTrait
                 array('action' => 'edit', 'id' => $this->_getEntity()->getId())
             ), '/'), 'Редактирование');
 
-            $this->_getView()->setTemplate('core-control/forms/form');
-            $this->_getView()->setVariable('form', $form);
+            $this->_view()->setTemplate('core-control/forms/form');
+            $this->_view()->setVariable('form', $form);
 
-            return $this->_getView();
+            return $this->_view();
         }
 
         return $form;
