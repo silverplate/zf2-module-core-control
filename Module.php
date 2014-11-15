@@ -33,6 +33,8 @@ class Module
                 'FormCheckbox' => __NAMESPACE__ . '\Form\View\Helper\Checkbox',
                 'FormCollection' =>
                     __NAMESPACE__ . '\Form\View\Helper\Collection',
+                'FormMultiCheckbox' =>
+                    __NAMESPACE__ . '\Form\View\Helper\MultiCheckbox',
             )
         );
     }
