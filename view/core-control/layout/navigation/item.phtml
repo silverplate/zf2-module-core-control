@@ -3,7 +3,10 @@
 $href = rtrim($this->model->getHref(), '/');
 $isSubPages = count($this->model->getPages()) > 0;
 
-$params = $this->model->getParams();
+$params = method_exists($this->model, 'getParams')
+        ? $this->model->getParams()
+        : [];
+
 $isCurrent = !empty($params['is-selected']);
 
 $classes = array();
